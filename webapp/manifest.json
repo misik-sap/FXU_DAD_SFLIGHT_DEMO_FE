@@ -1,0 +1,178 @@
+{
+	"_version": "1.7.0",
+	"sap.app": {
+		"id": "${project.artifactId}",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "${project.version}"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"tags": {
+			"keywords": []
+		},
+		"ach": "FI",
+		"resources": "resources.json",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/FXU_DAD_SFLIGHT_DEMO_SRV/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"annotations": [
+						"FXU_DAD_SFLIGHT_DEMO_ANNO_MDL",
+						"localAnnotations"
+					],
+					"localUri": "localService/metadata.xml"
+				}
+			},
+			"FXU_DAD_SFLIGHT_DEMO_ANNO_MDL": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='FXU_DAD_SFLIGHT_DEMO_ANNO_MDL',Version='0001')/$value/",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/FXU_DAD_SFLIGHT_DEMO_ANNO_MDL.xml"
+				}
+			},
+			"localAnnotations": {
+				"uri": "annotations/annotations.xml",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "annotations/annotations.xml"
+				}
+			}
+		},
+		"offline": false,
+		"sourceTemplate": {
+			"id": "ALP_WebIDE_Plugin.analyticallistpage",
+			"version": "1.41.1"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": false,
+			"phone": false
+		},
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"resources": {
+			"js": [],
+			"css": []
+		},
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ui.core": {
+					"lazy": false
+				},
+				"sap.ui.generic.app": {
+					"lazy": false
+				},
+				"sap.suite.ui.generic.template": {
+					"lazy": false
+				}
+			},
+			"components": {}
+		},
+		"models": {
+			"i18n": {
+				"preload": false,
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties",
+				"settings": {
+					"bundleName": "FXU_DAD.FXU_DAD_SFLIGHT_DEMO.i18n.i18n"
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"i18n|sap.suite.ui.generic.template.AnalyticalListPage|FXU_DAD_C_SCARRWITHSFLIGHTSTAT": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/AnalyticalListPage/FXU_DAD_C_SCARRWITHSFLIGHTSTAT/i18n.properties"
+			},
+			"i18n|sap.suite.ui.generic.template.ObjectPage|FXU_DAD_C_SCARRWITHSFLIGHTSTAT": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/ObjectPage/FXU_DAD_C_SCARRWITHSFLIGHTSTAT/i18n.properties"
+			},
+			"i18n|sap.suite.ui.generic.template.ObjectPage|FXU_DAD_C_SFLIGHT": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/ObjectPage/FXU_DAD_C_SFLIGHT/i18n.properties"
+			},
+			"": {
+				"preload": true,
+				"dataSource": "mainService",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"refreshAfterChange": false
+				}
+			}
+		},
+		"extends": {
+			"extensions": {}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": false
+		}
+	},
+	"sap.ui.generic.app": {
+		"_version": "1.3.0",
+		"pages": {
+			"AnalyticalListPage|FXU_DAD_C_SCARRWITHSFLIGHTSTAT": {
+				"entitySet": "FXU_DAD_C_SCARRWITHSFLIGHTSTAT",
+				"component": {
+					"name": "sap.suite.ui.generic.template.AnalyticalListPage",
+					"list": true,
+					"settings": {
+						"tableType": "AnalyticalTable",
+						"multiSelect": true,
+						"autoHide": true,
+						"showGoButtonOnFilterBar": true,
+						"condensedTableLayout": true,
+						"keyPerformanceIndicators": {}
+					}
+				},
+				"pages": {
+					"ObjectPage|FXU_DAD_C_SCARRWITHSFLIGHTSTAT": {
+						"entitySet": "FXU_DAD_C_SCARRWITHSFLIGHTSTAT",
+						"component": {
+							"name": "sap.suite.ui.generic.template.ObjectPage"
+						},
+						"pages": {
+							"ObjectPage|to_sflight": {
+								"navigationProperty": "to_sflight",
+								"entitySet": "FXU_DAD_C_SFLIGHT",
+								"component": {
+									"name": "sap.suite.ui.generic.template.ObjectPage"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "analytical"
+	},
+	"sap.platform.hcp": {
+		"uri": ""
+	}
+}

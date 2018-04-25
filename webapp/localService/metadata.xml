@@ -1,0 +1,119 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference
+        xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="./IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='LOCAL')/$value">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="FXU_DAD_SFLIGHT_DEMO_SRV" xml:lang="cs" sap:schema-version="1">
+            <EntityType Name="FXU_DAD_C_SCARRWITHSFLIGHTSTATType" sap:semantics="aggregate" sap:label="Consumption CDS for SCARR table with SFLIGHT stats" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AirlineCode" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:display-format="UpperCase" sap:label="Airline code" sap:quickinfo="Krátké označení letecké společnosti"/>
+                <Property Name="AirlineName" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Airline name" sap:quickinfo="Název letecké společnosti"/>
+                <Property Name="AirlineName1" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Airline name" sap:quickinfo="Název letecké společnosti"/>
+                <Property Name="AirlineName2" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Airline name" sap:quickinfo="Název letecké společnosti"/>
+                <Property Name="AirlineName3" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Airline name" sap:quickinfo="Název letecké společnosti"/>
+                <Property Name="AirlineName4" Type="Edm.String" MaxLength="20" sap:aggregation-role="dimension" sap:label="Airline name" sap:quickinfo="Název letecké společnosti"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:aggregation-role="dimension" sap:label="Currency code" sap:quickinfo="Firemní měna letecké společnosti" sap:semantics="currency-code"/>
+                <Property Name="SeatsUnit" Type="Edm.String" MaxLength="3" sap:aggregation-role="dimension" sap:label="Seats unit" sap:semantics="unit-of-measure"/>
+                <Property Name="FlightCount" Type="Edm.Int32" sap:aggregation-role="measure" sap:label="Flight count" sap:filterable="false"/>
+                <Property Name="FlightCountCriticality" Type="Edm.Byte" sap:aggregation-role="dimension"/>
+                <Property Name="FlightCountTrendRef" Type="Edm.Byte" sap:aggregation-role="dimension"/>
+                <Property Name="FlightCountTarget" Type="Edm.Byte" sap:aggregation-role="dimension"/>
+                <Property Name="PriceAverage" Type="Edm.Decimal" Precision="10" Scale="2" sap:aggregation-role="measure" sap:unit="CurrencyCode" sap:label="Price average" sap:filterable="false"/>
+                <Property Name="PriceAverageTrendRef" Type="Edm.Int16" sap:aggregation-role="dimension" sap:unit="CurrencyCode"/>
+                <Property Name="PriceSummary" Type="Edm.Decimal" Precision="16" Scale="3" sap:aggregation-role="measure" sap:unit="CurrencyCode" sap:label="Price summary" sap:filterable="false"/>
+                <Property Name="PriceSummaryOvw" Type="Edm.Decimal" Precision="16" Scale="3" sap:aggregation-role="measure" sap:unit="CurrencyCode" sap:label="Price summary" sap:filterable="false"/>
+                <Property Name="PriceSummaryDataPoint" Type="Edm.Decimal" Precision="16" Scale="3" sap:aggregation-role="measure" sap:unit="CurrencyCode" sap:label="Price summary" sap:filterable="false"/>
+                <Property Name="PriceSummaryTrend" Type="Edm.Byte" sap:aggregation-role="dimension"/>
+                <Property Name="PriceSummaryCriticality" Type="Edm.Byte" sap:aggregation-role="dimension"/>
+                <Property Name="PriceSummaryTrendRefValue" Type="Edm.Int32" sap:aggregation-role="dimension" sap:unit="CurrencyCode"/>
+                <Property Name="SeatsMaxBusinessAverage" Type="Edm.Decimal" Precision="10" Scale="2" sap:aggregation-role="measure" sap:unit="SeatsUnit" sap:label="Seats max business avg" sap:filterable="false"/>
+                <Property Name="SeatsMaxBusinessSummary" Type="Edm.Int32" sap:aggregation-role="measure" sap:unit="SeatsUnit" sap:label="Seats max business sum" sap:filterable="false"/>
+                <Property Name="SeatsMaxEconomyAverage" Type="Edm.Decimal" Precision="10" Scale="2" sap:aggregation-role="measure" sap:unit="SeatsUnit" sap:label="Seats max economy avg" sap:filterable="false"/>
+                <Property Name="SeatsMaxEconomySummary" Type="Edm.Int32" sap:aggregation-role="measure" sap:unit="SeatsUnit" sap:label="Seats max economy sum" sap:filterable="false"/>
+                <Property Name="SeatsMaxFirstAverage" Type="Edm.Decimal" Precision="10" Scale="2" sap:aggregation-role="measure" sap:unit="SeatsUnit" sap:label="Seats max first avg" sap:filterable="false"/>
+                <Property Name="SeatsMaxFirstSummary" Type="Edm.Int32" sap:aggregation-role="measure" sap:unit="SeatsUnit" sap:label="Seats max first sum" sap:filterable="false"/>
+                <NavigationProperty Name="to_sflight" Relationship="FXU_DAD_SFLIGHT_DEMO_SRV.assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635" FromRole="FromRole_assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635" ToRole="ToRole_assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635"/>
+            </EntityType>
+            <EntityType Name="FXU_DAD_C_SFLIGHTType" sap:label="Basic CDS for SFLIGHT table" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="AirlineCode"/>
+                    <PropertyRef Name="FlightConnectionNumber"/>
+                    <PropertyRef Name="FlightDate"/>
+                </Key>
+                <Property Name="AirlineCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Airline code" sap:quickinfo="Krátké označení letecké společnosti"/>
+                <Property Name="FlightConnectionNumber" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Flight connect. num." sap:quickinfo="Flight connection number"/>
+                <Property Name="FlightDate" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Flight date" sap:quickinfo="Datum letu"/>
+                <Property Name="AircraftType" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Aircraft type" sap:quickinfo="Typ letadla"/>
+                <Property Name="Price" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="CurrencyCode" sap:label="Price" sap:quickinfo="Cena letu"/>
+                <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5" sap:label="Currency code" sap:quickinfo="Firemní měna letecké společnosti" sap:semantics="currency-code"/>
+                <Property Name="PaymentSum" Type="Edm.Decimal" Precision="18" Scale="3" sap:unit="CurrencyCode" sap:label="Payment summary" sap:quickinfo="Součet dosavadních účetních příjmů"/>
+                <Property Name="SeatsMaxEconomy" Type="Edm.Int32" sap:label="Max seats economy" sap:quickinfo="Max seats in economy class"/>
+                <Property Name="SeatsMaxBusiness" Type="Edm.Int32" sap:label="Max seats business" sap:quickinfo="Max seats in business class"/>
+                <Property Name="SeatsMaxFirst" Type="Edm.Int32" sap:label="Max seats first" sap:quickinfo="Max seats in first class"/>
+                <Property Name="SeatsOccupiedEconomy" Type="Edm.Int32" sap:label="Occupied seats economy" sap:quickinfo="Occupied seats in economy class"/>
+                <Property Name="SeatsOccupiedBusiness" Type="Edm.Int32" sap:label="Occupied seats business" sap:quickinfo="Occupied seats in business class"/>
+                <Property Name="SeatsOccupiedFirst" Type="Edm.Int32" sap:label="Occupied seats first" sap:quickinfo="Occupied seats in first class"/>
+            </EntityType>
+            <Association Name="assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635" sap:content-version="1">
+                <End Type="FXU_DAD_SFLIGHT_DEMO_SRV.FXU_DAD_C_SCARRWITHSFLIGHTSTATType" Multiplicity="1" Role="FromRole_assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635"/>
+                <End Type="FXU_DAD_SFLIGHT_DEMO_SRV.FXU_DAD_C_SFLIGHTType" Multiplicity="*" Role="ToRole_assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635"/>
+            </Association>
+            <EntityContainer Name="FXU_DAD_SFLIGHT_DEMO_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="FXU_DAD_C_SCARRWITHSFLIGHTSTAT" EntityType="FXU_DAD_SFLIGHT_DEMO_SRV.FXU_DAD_C_SCARRWITHSFLIGHTSTATType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="FXU_DAD_C_SFLIGHT" EntityType="FXU_DAD_SFLIGHT_DEMO_SRV.FXU_DAD_C_SFLIGHTType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <AssociationSet Name="assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635" Association="FXU_DAD_SFLIGHT_DEMO_SRV.assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="FXU_DAD_C_SCARRWITHSFLIGHTSTAT" Role="FromRole_assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635"/>
+                    <End EntitySet="FXU_DAD_C_SFLIGHT" Role="ToRole_assoc_5EF4E1FC1F6B20DA91B2AC8780FB5635"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations
+                xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="FXU_DAD_SFLIGHT_DEMO_SRV.FXU_DAD_SFLIGHT_DEMO_SRV_Entities/FXU_DAD_C_SCARRWITHSFLIGHTSTAT">
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                                <PropertyPath>FlightCount</PropertyPath>
+                                <PropertyPath>PriceAverage</PropertyPath>
+                                <PropertyPath>PriceSummary</PropertyPath>
+                                <PropertyPath>PriceSummaryOvw</PropertyPath>
+                                <PropertyPath>PriceSummaryDataPoint</PropertyPath>
+                                <PropertyPath>SeatsMaxBusinessAverage</PropertyPath>
+                                <PropertyPath>SeatsMaxBusinessSummary</PropertyPath>
+                                <PropertyPath>SeatsMaxEconomyAverage</PropertyPath>
+                                <PropertyPath>SeatsMaxEconomySummary</PropertyPath>
+                                <PropertyPath>SeatsMaxFirstAverage</PropertyPath>
+                                <PropertyPath>SeatsMaxFirstSummary</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>ID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/FXU_DAD_SFLIGHT_DEMO_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/FXU_DAD_SFLIGHT_DEMO_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
